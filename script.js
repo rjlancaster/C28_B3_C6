@@ -134,42 +134,47 @@ const student = (name, clazz, info, status) => `
 
 
 // Creating Elements
-const article1 = document.querySelector("#messages")
 
-let sec = document.createElement("section");
-sec.textContent = "hello world"
-sec.classList = "message";
-
-article1.appendChild(sec);
-
-const testFrag = document.createDocumentFragment()
-
-const message = (name, frag, msg) => {
-  document.createElement('div');
-  name.textContent = msg;
-  frag.appendChild(name);
+function printMsg(messages) {
+  const fragment = document.createDocumentFragment()
+  const article = document.querySelector("#messages");
+  for (let i = 0; i < messages.length; i++) {
+    let sec = document.createElement("section");
+    sec.textContent = messages[i];
+    sec.setAttribute("class", "message");
+    fragment.appendChild(sec)
+  }
+  article.appendChild(fragment);
 }
 
-message(howdy, testFrag, "howdy!!");
+let myMsgs = [];
 
-document.querySelector("#messages").appendChild(testFrag)
-// createDocumentFragment()
+function addMsgs (newMsg) {
+  myMsgs.push(newMsg);
+}
 
-const fragment = document.createDocumentFragment()
+addMsgs("Hey, how ya doin?");
+addMsgs("Not bad, you?");
+addMsgs("Crazy weather we're having today, eh?");
+addMsgs("Uh, lemme get back to you on that");
 
-// Create an emperor component element
-const julius = document.createElement('div')
-julius.textContent = "Julius Caesar"
-fragment.appendChild(julius)
 
-// Create an emperor component element
-const augustus = document.createElement('div')
-augustus.textContent = "Augustus Caesar"
-fragment.appendChild(augustus)
+printMsg(myMsgs);
 
-// Create an emperor component element
-const aurelius = document.createElement('div')
-aurelius.textContent = "Marcus Aurelius"
-fragment.appendChild(aurelius)
 
-document.querySelector("#emperorList").appendChild(fragment)
+// // Create an emperor component element
+// const julius = document.createElement('div')
+// julius.textContent = "Julius Caesar"
+// fragment.appendChild(julius)
+
+// // Create an emperor component element
+// const augustus = document.createElement('div')
+// augustus.textContent = "Augustus Caesar"
+// fragment.appendChild(augustus)
+
+// // Create an emperor component element
+// const aurelius = document.createElement('div')
+// aurelius.textContent = "Marcus Aurelius"
+// fragment.appendChild(aurelius)
+
+// document.querySelector("#emperorList").appendChild(fragment)
